@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: #f0f2f5;
+}
+
+.sensor-card {
+  text-align: center;
+  height: 100%;
+}
+
+.sensor-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.sensor-footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.sensor-time {
+  color: #888;
+  font-size: 12px;
+}
+
+.info-row-selected > td {
+  background: #e6f4ff !important;
+}
