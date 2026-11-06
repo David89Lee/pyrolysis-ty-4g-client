@@ -42,15 +42,21 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
 
   return (
     <Card
-      title={`Dtu ${dtu}`}
+      size="small"
+      className="dtu-card"
+      title={`设备${dtu}`}
       extra={
-        <Space>
-          <Button onClick={() => setListMode('records')}>查看记录</Button>
-          <Button onClick={() => setListMode('history')}>查看历史</Button>
+        <Space size={4}>
+          <Button size="small" onClick={() => setListMode('records')}>
+            查看记录
+          </Button>
+          <Button size="small" onClick={() => setListMode('history')}>
+            查看历史
+          </Button>
         </Space>
       }
     >
-      <Row gutter={[16, 16]}>
+      <Row gutter={[8, 8]}>
         {SENSOR_ITEMS.slice(0, 4).map((item) => (
           <Col key={item.key} xs={24} sm={12} xl={8}>
             <Card size="small" className="sensor-card">
@@ -59,7 +65,7 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
                 value={values?.[item.key] ?? '--'}
                 precision={item.precision}
                 suffix={item.unit}
-                styles={{ value: { fontSize: 22 } }}
+                styles={{ value: { fontSize: 18 } }}
               />
               <Button
                 type="link"
@@ -72,8 +78,9 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
           </Col>
         ))}
         <Col xs={24} sm={12} xl={8}>
-          <Card size="small" className="sensor-card" title="传感器状态">
-            <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+          <Card size="small" className="sensor-card">
+            <div className="sensor-card-title">传感器状态</div>
+            <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
               <Tag color={sample ? (sample.sensor_normal ? 'success' : 'error') : 'default'}>
                 {sample ? (sample.sensor_normal ? '正常' : '异常') : '--'}
               </Tag>
@@ -91,7 +98,7 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
                 value={values?.[item.key] ?? '--'}
                 precision={item.precision}
                 suffix={item.unit}
-                styles={{ value: { fontSize: 22 } }}
+                styles={{ value: { fontSize: 18 } }}
               />
               <Button
                 type="link"
@@ -106,14 +113,14 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
       </Row>
 
       <div className="sensor-footer">
-        <Space>
-          <Tag color={sample ? (sample.sensor_normal ? 'success' : 'error') : 'default'}>
-            传感器{sample ? (sample.sensor_normal ? '正常' : '异常') : '--'}
-          </Tag>
-          <Tag color={sample ? (sample.alarming ? 'error' : 'success') : 'default'}>
-            {sample ? (sample.alarming ? '报警中' : '无报警') : '--'}
-          </Tag>
-        </Space>
+        {/*<Space>*/}
+        {/*  <Tag color={sample ? (sample.sensor_normal ? 'success' : 'error') : 'default'}>*/}
+        {/*    传感器{sample ? (sample.sensor_normal ? '正常' : '异常') : '--'}*/}
+        {/*  </Tag>*/}
+        {/*  <Tag color={sample ? (sample.alarming ? 'error' : 'success') : 'default'}>*/}
+        {/*    {sample ? (sample.alarming ? '报警中' : '无报警') : '--'}*/}
+        {/*  </Tag>*/}
+        {/*</Space>*/}
         {sample?.timestamp && (
           <span className="sensor-time">
             采样时间：{dayjs(sample.timestamp).format('YYYY-MM-DD HH:mm:ss')}

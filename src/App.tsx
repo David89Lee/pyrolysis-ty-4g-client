@@ -15,8 +15,17 @@ export default function App() {
     <ConfigProvider locale={zhCN}>
       <AntdApp>
         <Layout style={{ minHeight: '100vh' }}>
-          <Header style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <Typography.Title level={4} style={{ color: '#fff', margin: 0 }}>
+          <Header
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 16,
+              height: 52,
+              lineHeight: '52px',
+              padding: '0 16px',
+            }}
+          >
+            <Typography.Title level={5} style={{ color: '#fff', margin: 0 }}>
               热解粒子监测系统
             </Typography.Title>
             <Badge
@@ -28,9 +37,9 @@ export default function App() {
               }
             />
           </Header>
-          <Content style={{ padding: 24 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              <Row gutter={[24, 24]}>
+          <Content style={{ padding: 12 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <Row gutter={[12, 12]}>
                 {DTU_LIST.map((dtu) => (
                   <Col key={dtu} xs={24} xl={12}>
                     <DtuModule dtu={dtu} sample={samples[dtu]} />

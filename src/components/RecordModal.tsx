@@ -111,7 +111,7 @@ export default function RecordModal({ open, dtu, mode, onClose }: RecordModalPro
 
   return (
     <Modal
-      title={`${mode === 'history' ? '历史数据' : '记录数据'} - Dtu ${dtu}`}
+      title={`${mode === 'history' ? '历史数据' : '记录数据'} - 设备${dtu}`}
       open={open}
       onCancel={onClose}
       footer={null}
