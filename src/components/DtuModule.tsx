@@ -51,8 +51,8 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
       }
     >
       <Row gutter={[16, 16]}>
-        {SENSOR_ITEMS.map((item) => (
-          <Col key={item.key} xs={12} sm={8} md={6} lg={5} xl={4}>
+        {SENSOR_ITEMS.slice(0, 4).map((item) => (
+          <Col key={item.key} xs={24} sm={12} xl={8}>
             <Card size="small" className="sensor-card">
               <Statistic
                 title={item.label}
@@ -71,7 +71,7 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
             </Card>
           </Col>
         ))}
-        <Col xs={12} sm={8} md={6} lg={4} xl={4}>
+        <Col xs={24} sm={12} xl={8}>
           <Card size="small" className="sensor-card" title="传感器状态">
             <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
               <Tag color={sample ? (sample.sensor_normal ? 'success' : 'error') : 'default'}>
@@ -83,6 +83,26 @@ export default function DtuModule({ dtu, sample }: DtuModuleProps) {
             </div>
           </Card>
         </Col>
+        {SENSOR_ITEMS.slice(4).map((item) => (
+          <Col key={item.key} xs={24} sm={12} xl={8}>
+            <Card size="small" className="sensor-card">
+              <Statistic
+                title={item.label}
+                value={values?.[item.key] ?? '--'}
+                precision={item.precision}
+                suffix={item.unit}
+                styles={{ value: { fontSize: 22 } }}
+              />
+              <Button
+                type="link"
+                size="small"
+                onClick={() => setCurve({ field: item.key, title: item.label })}
+              >
+                查看曲线
+              </Button>
+            </Card>
+          </Col>
+        ))}
       </Row>
 
       <div className="sensor-footer">

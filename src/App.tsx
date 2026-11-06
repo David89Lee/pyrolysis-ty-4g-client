@@ -1,4 +1,4 @@
-import { App as AntdApp, Badge, ConfigProvider, Layout, Typography } from 'antd'
+import { App as AntdApp, Badge, Col, ConfigProvider, Layout, Row, Typography } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import DtuModule from './components/DtuModule'
 import InfoPanel from './components/InfoPanel'
@@ -30,9 +30,13 @@ export default function App() {
           </Header>
           <Content style={{ padding: 24 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-              {DTU_LIST.map((dtu) => (
-                <DtuModule key={dtu} dtu={dtu} sample={samples[dtu]} />
-              ))}
+              <Row gutter={[24, 24]}>
+                {DTU_LIST.map((dtu) => (
+                  <Col key={dtu} xs={24} xl={12}>
+                    <DtuModule dtu={dtu} sample={samples[dtu]} />
+                  </Col>
+                ))}
+              </Row>
               <InfoPanel />
             </div>
           </Content>
